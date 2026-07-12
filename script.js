@@ -171,3 +171,15 @@ cat.style.transform="scale(1)";
 console.log(
 "🐱 Built by Chip with love for Eric ❤️"
 );
+
+function openVideo() {
+    nextPage("video");
+
+    const video = document.querySelector(".video-player");
+
+    if (video) {
+        video.play().catch(err => {
+            console.log("Autoplay blocked:", err);
+        });
+    }
+}
