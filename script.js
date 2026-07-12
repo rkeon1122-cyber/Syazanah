@@ -1,8 +1,8 @@
-// ==========================
-// Page Navigation
-// ==========================
+// =========================
+// PAGE SWITCH
+// =========================
 
-function nextPage(pageId){
+function nextPage(id){
 
 document.querySelectorAll(".page").forEach(page=>{
 
@@ -10,51 +10,19 @@ page.classList.remove("active");
 
 });
 
-document.getElementById(pageId).classList.add("active");
-
-window.scrollTo(0,0);
+document.getElementById(id).classList.add("active");
 
 }
 
-// ==========================
-// No Button
-// Moves once only
-// ==========================
+// =========================
+// FLOATING HEARTS
+// =========================
 
-const noBtn=document.getElementById("noBtn");
-
-let moved=false;
-
-noBtn.addEventListener("click",()=>{
-
-if(!moved){
-
-const x=Math.random()*180-90;
-const y=Math.random()*40-20;
-
-noBtn.style.position="relative";
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
-
-moved=true;
-
-}else{
-
-nextPage("letter");
-
-}
-
-});
-
-// ==========================
-// Floating Hearts
-// ==========================
-
-const heartContainer=document.getElementById("hearts");
+const hearts=document.getElementById("hearts");
 
 function createHeart(){
 
-const heart=document.createElement("span");
+const heart=document.createElement("div");
 
 heart.className="heart";
 
@@ -66,9 +34,9 @@ heart.style.animationDuration=
 (8+Math.random()*6)+"s";
 
 heart.style.fontSize=
-(16+Math.random()*16)+"px";
+(15+Math.random()*18)+"px";
 
-heartContainer.appendChild(heart);
+hearts.appendChild(heart);
 
 setTimeout(()=>{
 
@@ -78,32 +46,128 @@ heart.remove();
 
 }
 
-setInterval(createHeart,700);
+setInterval(createHeart,500);
 
-// ==========================
-// Keyboard Support
-// ==========================
+// =========================
+// NO BUTTON ESCAPE
+// =========================
 
-document.addEventListener("keydown",(e)=>{
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
 
-if(e.key==="Enter"){
+let yesScale=1;
 
-const current=document.querySelector(".page.active");
+noBtn.addEventListener("mouseenter",moveNo);
+noBtn.addEventListener("touchstart",moveNo);
 
-if(current.id==="welcome"){
+function moveNo(e){
 
-nextPage("cat");
+e.preventDefault();
+
+const x=Math.random()*260-130;
+const y=Math.random()*180-90;
+
+noBtn.style.position="relative";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+yesScale+=0.08;
+
+yesBtn.style.transform=
+`scale(${yesScale})`;
 
 }
+
+// =========================
+// TYPEWRITER
+// =========================
+
+const paragraphs=document.querySelectorAll(".type");
+
+paragraphs.forEach(p=>{
+
+const text=p.innerHTML;
+
+p.innerHTML="";
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+p.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,28);
+
+}
+
+}
+
+const observer=new IntersectionObserver(entries=>{
+
+if(entries[0].isIntersecting){
+
+type();
+
+observer.disconnect();
 
 }
 
 });
 
-// ==========================
-// Console Easter Egg 😂
-// ==========================
+observer.observe(p);
+
+});
+
+// =========================
+// END HEART BURST
+// =========================
+
+const finishBtn=document.querySelector("#video button");
+
+if(finishBtn){
+
+finishBtn.addEventListener("click",()=>{
+
+for(let i=0;i<60;i++){
+
+setTimeout(createHeart,i*40);
+
+}
+
+});
+
+}
+
+// =========================
+// CAT BOUNCE
+// =========================
+
+const cat=document.querySelector(".cat");
+
+if(cat){
+
+setInterval(()=>{
+
+cat.style.transform="scale(1.06)";
+
+setTimeout(()=>{
+
+cat.style.transform="scale(1)";
+
+},300);
+
+},3500);
+
+}
+
+// =========================
+// CONSOLE 😂
+// =========================
 
 console.log(
-"🐱 Built with love by Chip for Eric & Norsyazanah ❤️"
+"🐱 Built by Chip with love for Eric ❤️"
 );

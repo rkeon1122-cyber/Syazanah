@@ -1,5 +1,3 @@
-/* ---------- RESET ---------- */
-
 *{
 margin:0;
 padding:0;
@@ -8,216 +6,215 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-
 background:#050816;
 overflow:hidden;
-color:white;
-
+color:#fff;
 }
 
-/* ---------- STARS ---------- */
+/* ===== STARRY SKY ===== */
 
 #stars{
-
 position:fixed;
 inset:0;
-
 background:
-radial-gradient(white 1px,transparent 1px);
-
+radial-gradient(white 1px,transparent 2px);
 background-size:90px 90px;
-
 opacity:.35;
+animation:starsMove 80s linear infinite;
+z-index:-5;
+}
 
-animation:moveStars 70s linear infinite;
+@keyframes starsMove{
+from{transform:translateY(0);}
+to{transform:translateY(-800px);}
+}
 
-z-index:-2;
+/* ===== MOON ===== */
+
+#moon{
+position:fixed;
+top:60px;
+right:70px;
+width:120px;
+height:120px;
+border-radius:50%;
+background:#fff;
+box-shadow:
+0 0 40px #fff,
+0 0 120px #ffffff80;
+opacity:.15;
+z-index:-4;
+animation:moon 8s ease-in-out infinite;
+}
+
+@keyframes moon{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
 
 }
 
-@keyframes moveStars{
-
-from{
-transform:translateY(0);
-}
-
-to{
-transform:translateY(-600px);
-}
-
-}
-
-/* ---------- HEARTS ---------- */
+/* ===== HEARTS ===== */
 
 #hearts{
-
 position:fixed;
 inset:0;
-
 pointer-events:none;
-
-z-index:-1;
-
+z-index:-3;
 }
 
 .heart{
-
 position:absolute;
-
-font-size:20px;
-
-animation:float 12s linear infinite;
-
-opacity:.4;
-
+font-size:18px;
+animation:float 10s linear infinite;
+opacity:.45;
 }
 
 @keyframes float{
 
 0%{
-
 transform:translateY(120vh);
-
 opacity:0;
-
 }
 
 20%{
-
 opacity:.4;
-
 }
 
 100%{
-
 transform:translateY(-20vh);
-
 opacity:0;
-
 }
 
 }
 
-/* ---------- PAGE ---------- */
+/* ===== PAGE ===== */
 
 .page{
 
 display:none;
-
 width:100vw;
-
 height:100vh;
 
 justify-content:center;
-
 align-items:center;
 
-padding:20px;
+padding:25px;
 
 }
 
 .page.active{
 
 display:flex;
-
-animation:fade .8s;
+animation:fade .6s;
 
 }
 
 @keyframes fade{
 
 from{
-
 opacity:0;
-
 transform:scale(.96);
-
 }
 
 to{
-
 opacity:1;
-
 transform:scale(1);
-
 }
 
 }
 
-/* ---------- CARD ---------- */
+/* ===== GLASS CARD ===== */
 
-.glass{
+.card{
 
-width:min(90%,520px);
-
-padding:35px;
-
-border-radius:28px;
-
-text-align:center;
+width:min(92%,520px);
 
 background:rgba(255,255,255,.08);
 
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,.15);
+border-radius:28px;
+
+padding:35px;
+
+border:1px solid rgba(255,255,255,.18);
 
 box-shadow:
-0 20px 50px rgba(0,0,0,.35);
+
+0 25px 60px rgba(0,0,0,.35);
+
+text-align:center;
 
 }
 
-/* ---------- TEXT ---------- */
+/* ===== TEXT ===== */
 
 h1{
 
 font-size:34px;
+margin-bottom:12px;
 
-margin-bottom:15px;
+}
+
+.subtitle{
+
+opacity:.75;
+margin-bottom:25px;
 
 }
 
 h2{
 
-margin:20px 0;
-
 font-size:28px;
+margin:20px 0;
 
 }
 
 p{
 
+line-height:1.8;
 margin:15px 0;
-
-line-height:1.9;
-
-font-size:17px;
 
 }
 
-/* ---------- CAT ---------- */
+/* ===== CAT ===== */
 
 .cat{
 
-width:230px;
-
-max-width:100%;
+width:220px;
 
 border-radius:18px;
 
-margin-bottom:18px;
+animation:bounce 2s ease-in-out infinite;
 
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+filter:drop-shadow(0 10px 20px rgba(0,0,0,.4));
 
 }
 
-/* ---------- BUTTONS ---------- */
+@keyframes bounce{
 
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+/* ===== BUTTON ===== */
+
+.mainBtn,
 button{
 
-margin-top:20px;
-
-padding:14px 26px;
+padding:14px 28px;
 
 border:none;
 
@@ -229,31 +226,49 @@ font-size:17px;
 
 font-weight:600;
 
-transition:.3s;
+margin:10px;
+
+transition:.35s;
+
+background:white;
+
+color:#111;
 
 }
 
+.mainBtn:hover,
 button:hover{
 
-transform:scale(1.05);
+transform:scale(1.08);
+
+box-shadow:
+0 0 25px rgba(255,255,255,.45);
 
 }
 
-.buttons{
+/* ===== YES ===== */
 
-display:flex;
+#yesBtn{
 
-justify-content:center;
-
-gap:15px;
-
-flex-wrap:wrap;
+background:#ff77b7;
+color:white;
 
 }
 
-/* ---------- VIDEO ---------- */
+/* ===== NO ===== */
+
+#noBtn{
+
+background:#ffffff22;
+color:white;
+
+}
+
+/* ===== VIDEO ===== */
 
 iframe{
+
+margin-top:20px;
 
 width:100%;
 
@@ -261,17 +276,35 @@ height:320px;
 
 border:none;
 
-border-radius:20px;
+border-radius:18px;
 
-margin-top:20px;
+box-shadow:
 
-background:black;
+0 10px 30px rgba(0,0,0,.35);
 
 }
 
-/* ---------- MOBILE ---------- */
+/* ===== MOBILE ===== */
 
 @media(max-width:600px){
+
+.card{
+
+padding:28px;
+
+}
+
+.cat{
+
+width:180px;
+
+}
+
+iframe{
+
+height:220px;
+
+}
 
 h1{
 
@@ -281,19 +314,7 @@ font-size:28px;
 
 h2{
 
-font-size:24px;
-
-}
-
-p{
-
-font-size:16px;
-
-}
-
-iframe{
-
-height:250px;
+font-size:22px;
 
 }
 

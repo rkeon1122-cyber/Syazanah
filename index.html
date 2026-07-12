@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>For Norsyazanah 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,36 +16,33 @@
 
 <div id="stars"></div>
 <div id="hearts"></div>
-
-<!-- WELCOME -->
+<div id="moon"></div>
 
 <section id="welcome" class="page active">
 
-<div class="glass">
+<div class="card">
 
 <h1>For Norsyazanah 🤍</h1>
 
-<p>A little something from Eric.</p>
+<p class="subtitle">
+A little something from Eric
+</p>
 
-<button onclick="nextPage('cat')">
-
+<button class="mainBtn" onclick="nextPage('cat')">
 ❤️ Tap To Start
-
 </button>
 
 </div>
 
 </section>
 
-<!-- CAT PAGE -->
-
 <section id="cat" class="page">
 
-<div class="glass">
+<div class="card">
 
 <img
 class="cat"
-src="https://placekitten.com/350/350"
+src="cat.gif"
 alt="Cute Cat">
 
 <h2>
@@ -55,7 +53,8 @@ Will you hear me out? 🥹
 
 <div class="buttons">
 
-<button onclick="nextPage('letter')">
+<button id="yesBtn"
+onclick="nextPage('letter')">
 
 💖 Yes
 
@@ -73,11 +72,9 @@ Will you hear me out? 🥹
 
 </section>
 
-<!-- LETTER -->
-
 <section id="letter" class="page">
 
-<div class="glass">
+<div class="card">
 
 <h2>
 
@@ -85,27 +82,27 @@ For You 🤍
 
 </h2>
 
-<p>
+<p class="type">
 
 Sorry sayang kalau saya ada buat silap... 🥹🤍
 
 </p>
 
-<p>
+<p class="type">
 
 It's not my intention to hurt your feelings.
-
 I'm really sorry. 😔❤️
 
 </p>
 
-<p>
+<p class="type">
 
 I hope you can forgive me. 🫶🏻
 
 </p>
 
-<button onclick="nextPage('video')">
+<button class="mainBtn"
+onclick="nextPage('video')">
 
 Continue ❤️
 
@@ -115,11 +112,9 @@ Continue ❤️
 
 </section>
 
-<!-- VIDEO -->
-
 <section id="video" class="page">
 
-<div class="glass">
+<div class="card">
 
 <h2>
 
@@ -128,18 +123,13 @@ A Message From Eric ❤️
 </h2>
 
 <iframe
-
 src="https://drive.google.com/file/d/10zJ8odrOOiN9pk_u66HIVA0EkYGr0maC/preview"
-
-allow="autoplay"
-
 allowfullscreen>
 
 </iframe>
 
-<br>
-
-<button onclick="nextPage('end')">
+<button class="mainBtn"
+onclick="nextPage('end')">
 
 Finish 🤍
 
@@ -149,11 +139,9 @@ Finish 🤍
 
 </section>
 
-<!-- END -->
-
 <section id="end" class="page">
 
-<div class="glass">
+<div class="card">
 
 <h1>
 
@@ -163,7 +151,7 @@ Thank You 🤍
 
 <p>
 
-Thank you for watching.
+Thank you for listening.
 
 </p>
 
